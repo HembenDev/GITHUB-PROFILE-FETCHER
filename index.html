@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GITHUB-FETCHER</title>
+  <style>
+    body{
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    input,button{
+      padding: 10px;
+      margin: 5px;
+    }
+    #profile,#repos{
+      padding: 20px;
+    }
+    #error{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>GitHub-Profile-Fetcher</h1>
+  <input type="text" id="username" placeholder="Enter Github username">
+  <button onclick="">Fetch Profile</button>
+  <div id="profile"></div>
+  <div id="repos"></div>
+  <div id="error"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

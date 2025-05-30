@@ -22,7 +22,7 @@ async function fetchProfile(){
     if(!reposResponse.ok) throw new Error('Error fetching repositories!')
 
     const user = await userResponse.json();
-    const repo = await reposResponse.json();
+    const repos = await reposResponse.json();
 
     profileDiv.innerHTML = `
     <img src="${user.avatar_url}" alt="${user.login}" width="100">
@@ -30,7 +30,19 @@ async function fetchProfile(){
     <p>${user.bio || 'No bio available!'}</p>
     <p>Followers: ${user.followers} | Following: ${user.following}</p>
     `
+    reposDiv.innerHTML = `<h3>Recent Repositories</h3>`
+    if(repos.length === 0){
+      reposDiv.innerHTML += `<p>No repositories found!</p>`
+    }else{
+      repos.forEach(repo => {
+        reposDiv.innerHTML += `<p>
+        <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+        : ${repo.description || 'No description'}
+      </p>
+    `;
+      });
+    }
   }catch(error){
-    console.error(error);
+    errorDiv.textContent = `Error: ${error.message}`;
   }
 }

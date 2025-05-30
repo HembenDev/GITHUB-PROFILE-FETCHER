@@ -26,6 +26,11 @@ async function fetchProfile(){
 
     profileDiv.innerHTML = `
     <img src="${user.avatar_url}" alt="${user.login}" width="100">
+    <h2>${user.name || user.login}</h2>
+    <p>${user.bio || 'No bio available!'}</p>
+    <p>Followers: ${user.followers} | Following: ${user.following}</p>
     `
+  }catch(error){
+    console.error(error);
   }
 }

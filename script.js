@@ -20,5 +20,12 @@ async function fetchProfile(){
     ]);
     if(!userResponse.ok) throw new Error('User not found!');
     if(!reposResponse.ok) throw new Error('Error fetching repositories!')
+
+    const user = await userResponse.json();
+    const repo = await reposResponse.json();
+
+    profileDiv.innerHTML = `
+    <img src="${user.avatar_url}" alt="${user.login}" width="100">
+    `
   }
 }
